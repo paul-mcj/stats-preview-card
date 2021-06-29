@@ -1,0 +1,193 @@
+/* Linked to "stats-preview.html" */
+/******************************************************************************
+	Table of Contents
+	-----------------
+
+	1. Global Styles
+		1.1 -- :root (pseudo-class)
+        1.2 -- :is(*, ::before, ::after)
+        1.3 -- body
+
+	2. Class Specific Selectors (as well as their @media queries)
+        2.1 -- .main-card
+        2.2 -- .main-image
+        2.3.1 -- .main-text
+            2.3.2 -- .main-text h2
+            2.3.3 -- .main-text > p
+        2.4.1 -- .stats
+            2.4.2 -- .stats h3
+            2.4.3 -- .stats p
+        2.5 -- .highlight-color
+
+*******************************************************************************/
+
+/******************************************************************************
+1. Global Styles
+******************************************************************************/
+
+/* 1.1 Declares basic variables for the root of the html document */
+:root {
+    box-sizing: border-box;
+    --bg-color: hsl(233, 47%, 7%);
+    --card--color: hsl(244, 38%, 16%);
+    --accent-color: hsl(277, 64%, 61%);
+    /* Slight variation in saturation and luminosity for the image tint is why the custom variable below is declared: */
+    --accent-color-query: hsl(280, 47%, 38%);
+    --white: hsl(0, 0%, 100%);
+    --white-60: hsl(0, 0%, 100%, 0.6);
+    --white-75: hsl(0, 0%, 100%, 0.75);
+    --font-inter: "Inter", sans-serif;
+    --font-lexend: "Lexend Deca", sans-serif;
+    --font-size: 0.9375em;
+}
+
+/* 1.2 Declares a global inheritance of box sizing*/
+:is(*, ::before, ::after) {
+    box-sizing: inherit;
+}
+
+/* 1.3 sets the body element specifics*/
+body {
+    background-color: var(--bg-color);
+    color: var(--white);
+    font-family: var(--font-inter);
+    font-size: var(--font-size);
+    min-height: 100vh;
+    /* Without setting the body's margin, it would overflow and cause the media queries set for (min-width: 1440px) to catch too early: */
+    margin: 0;
+    /* Center the entire card upon both x and y axes: */
+    display: grid;
+    place-items: center;
+}
+
+/******************************************************************************
+2. Class Specific Selectors (as well as their @media queries)
+******************************************************************************/
+
+/* 2.1 targets the article element that houses the entire stats card itself */
+.main-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card--color);
+    margin: 5em auto;
+    width: 92.5%;
+    border-radius: 0.5em;
+}
+@media (min-width: 1440px) {
+    .main-card {
+        flex-direction: row;
+        width: 70%;
+    }
+}
+
+/* 2.2 deals with the image part of the preview card */
+.main-image {
+    flex: 1;
+    min-height: 250px;
+    /* Rounding the appropriate corners: */
+    border-radius: 0.5em 0.5em 0 0;
+    background-image: url(images/image-header-mobile.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* I used this blend mode with a slightly varied accent color (as declared with other custom variables in the root class selector) as I thought this color matched a bit better: */
+    background-blend-mode: soft-light;
+    background-color: var(--accent-color-query);
+}
+@media (min-width: 1440px) {
+    .main-image {
+        /* Changing the appropriate corners: */
+        border-radius: 0 0.5em 0.5em 0;
+        /* Trying to make sure most of the image is "forced" into its part of the flexbox, hence the min-height is changed below: */
+        flex: 1;
+        /* Swapping the order of the flex items so that the image is on the right of the text when the breakpoint is hit: */
+        order: 1;
+        /* Also, making sure to change the source image to account for viewport changes: */
+        background-image: url(images/image-header-desktop.jpg);
+    }
+}
+
+/* 2.3.1 Stylistic rules for the main text of the preview card */
+.main-text {
+    text-align: center;
+    margin: 1em 2em;
+    flex: 2;
+}
+@media (min-width: 1440px) {
+    .main-text {
+        flex: 0.75;
+        text-align: left;
+        /* This margin is trial and error: */
+        margin: 5em 6em 3em 5em;
+    }
+}
+
+/* 2.3.2 Any h2 elements of the .main-text class are targeted for styling */
+.main-text h2 {
+    font-size: 1.8rem;
+}
+@media (min-width: 1440px) {
+    .main-text h2 {
+        margin-top: 0;
+    }
+}
+
+/* 2.3.3 Strictly targeting only direct children of the .main-text selector if they are tagged as a paragraph*/
+.main-text > p {
+    color: var(--white-60);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+@media (min-width: 1440px) {
+    .main-text > p {
+        font-size: 0.75rem;
+        margin-right: 4em;
+        /* I think the shade of white changes ever so slightly in desktop mode for this main paragraph. */
+        color: var(--white-60);
+    }
+}
+
+/* 2.4.1  Deals with the bottom stats of the card, beneath the paragraph*/
+.stats {
+    margin: 2em 0 0;
+}
+@media (min-width: 1440px) {
+    .stats {
+        display: flex;
+    }
+}
+
+/* 2.4.2  Specifically targets any h3 elements within the .stats selector*/
+.stats h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2em;
+}
+
+@media (min-width: 1440px) {
+    .stats h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.2em;
+    }
+}
+
+/* 2.4.3 Much like the above selector, only applying styles to paragraph elements.*/
+.stats p {
+    color: var(--white-60);
+    margin-top: 0;
+    font-size: 0.75rem;
+    /* Small amount of spacing between the letters of the stats headings */
+    letter-spacing: 0.1em;
+}
+@media (min-width: 1440px) {
+    .stats p {
+        margin-right: 3.5em;
+        /* Definitely a change in font when in desktop view */
+        font-family: var(--font-lexend);
+        font-size: 0.675rem;
+        letter-spacing: 0;
+    }
+}
+
+/* 2.5 A utility class to change the color of the text "insights" in the preview card. */
+.highlight-color {
+    color: var(--accent-color);
+}
