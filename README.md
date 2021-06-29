@@ -16,8 +16,8 @@
 
 ### Screenshots
 
-    - [Mobile screen shot](./screen-shot-mobile.png)
-    - [Desktop screen shot](./screen-shot-desktop.png)
+-   [Mobile screen shot](./screen-shot-mobile.png)
+-   [Desktop screen shot](./screen-shot-desktop.png)
 
 ### Links
 
