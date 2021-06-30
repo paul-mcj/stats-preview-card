@@ -86,7 +86,7 @@ body {
     min-height: 250px;
     /* Rounding the appropriate corners: */
     border-radius: 0.5em 0.5em 0 0;
-    background-image: url(./stats-preview-card/image-header-mobile.jpg);
+    background-image: url(https://github.com/paul-mcj/stats-preview-card/blob/main/image-header-mobile.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     /* I used this blend mode with a slightly varied accent color (as declared with other custom variables in the root class selector) as I thought this color matched a bit better: */
