@@ -21,7 +21,7 @@
 
 ### Links
 
--   Solution URL: [Add solution URL here](https://your-solution-url.com)
+-   [Solution URL](https://paul-mcj.github.io/stats-preview-card/)
 
 ## My process
 
