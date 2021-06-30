@@ -86,7 +86,7 @@ body {
     min-height: 250px;
     /* Rounding the appropriate corners: */
     border-radius: 0.5em 0.5em 0 0;
-    background-image: url(./image-header-mobile.jpg);
+    background-image: url(/image-header-mobile.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     /* I used this blend mode with a slightly varied accent color (as declared with other custom variables in the root class selector) as I thought this color matched a bit better: */
@@ -102,7 +102,7 @@ body {
         /* Swapping the order of the flex items so that the image is on the right of the text when the breakpoint is hit: */
         order: 1;
         /* Also, making sure to change the source image to account for viewport changes: */
-        background-image: url(./image-header-desktop.jpg);
+        background-image: url(/image-header-desktop.jpg);
     }
 }
 
